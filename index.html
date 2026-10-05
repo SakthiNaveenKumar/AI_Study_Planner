@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Study Planner Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <h1>AI Study Planner Dashboard</h1>
+    <div class="top-right">
+      <span id="today"></span>
+      <button id="themeBtn" type="button">Dark Mode</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="cards">
+      <div class="card">
+        <h3>Total Tasks</h3>
+        <p id="cTotal">0</p>
+      </div>
+      <div class="card">
+        <h3>Completed</h3>
+        <p id="cDone">0</p>
+      </div>
+      <div class="card">
+        <h3>Pending</h3>
+        <p id="cPending">0</p>
+      </div>
+      <div class="card warn">
+        <h3>Due Within 3 Days</h3>
+        <p id="cSoon">0</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Overall Progress</h2>
+      <div class="bar">
+        <div id="barFill"></div>
+      </div>
+      <p id="barText">0% completed</p>
+    </section>
+
+    <section class="panel">
+      <h2>Add Study Task</h2>
+      <form class="form" id="taskForm" onsubmit="return false;">
+        <label>
+          Subject
+          <input id="subject" type="text" placeholder="e.g. Web Programming" required>
+          <small class="err" id="eSubject"></small>
+        </label>
+        <label>
+          Task
+          <input id="title" type="text" placeholder="e.g. Finish mini project" required>
+          <small class="err" id="eTitle"></small>
+        </label>
+        <label>
+          Deadline
+          <input id="deadline" type="date" required>
+          <small class="err" id="eDeadline"></small>
+        </label>
+        <label>
+          Estimated Hours
+          <input id="hours" type="number" min="1" max="100" placeholder="1 - 100" required>
+          <small class="err" id="eHours"></small>
+        </label>
+        <label>
+          Priority
+          <select id="priority">
+            <option value="">Select</option>
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">High</option>
+          </select>
+          <small class="err" id="ePriority"></small>
+        </label>
+        <label>
+          Difficulty
+          <select id="difficulty">
+            <option value="">Select</option>
+            <option value="1">Easy</option>
+            <option value="2">Moderate</option>
+            <option value="3">Hard</option>
+          </select>
+          <small class="err" id="eDifficulty"></small>
+        </label>
+        <button id="addBtn" type="button">Add Task</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Ranked Task List</h2>
+      <div class="tools">
+        <input id="search" type="text" placeholder="Search subject or task">
+        <select id="filter">
+          <option value="all">All</option>
+          <option value="pending">Pending</option>
+          <option value="done">Completed</option>
+        </select>
+        <select id="sort">
+          <option value="score">Sort: Priority Score</option>
+          <option value="date">Sort: Deadline</option>
+        </select>
+      </div>
+      <div id="taskList"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Weekly Study Plan (hours)</h2>
+      <div class="scroll">
+        <table>
+          <thead id="planHead"></thead>
+          <tbody id="planBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>AI Study Planner Dashboard - Web Programming Mini Project</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
